@@ -6,7 +6,6 @@ from odoo.exceptions import UserError
 class StockPickingCustomization(models.Model):
     _inherit = 'stock.picking'
 
-
     def action_success(self):
         self.state='succeced'
 
