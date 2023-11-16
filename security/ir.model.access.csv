@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_exe_stock_statusbar_custom_exe_stock_statusbar_custom,exe_stock_statusbar_custom.exe_stock_statusbar_custom,model_exe_stock_statusbar_custom_exe_stock_statusbar_custom,base.group_user,1,1,1,1

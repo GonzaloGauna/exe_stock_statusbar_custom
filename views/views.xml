@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+    <record id="stock_picking_inherited_product_restricts" model="ir.ui.view">
+      <field name="name">stock.picking.inherited.customization</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form" />
+      <field name="arch" type="xml">
+        <!-- Se agrega Confirmado al statusbar-->
+        <xpath expr="/form/header/field[@name='state']" position="replace">
+          <!-- <field name="state"  statusbar_visible='get_status()'/> -->
+          <field name="state" widget="statusbar" invisible="1"/>
+          <field name="warehouse_id" invisible="1"/>
+          <field name="state_a" widget="statusbar" attrs="{'invisible': [('warehouse_id', '=', 1)]}" statusbar_visible="draft,confirmed,assigned,done"/>
+          <field name="state_b" widget="statusbar" attrs="{'invisible': [('warehouse_id', '!=', 1)]}" statusbar_visible="draft,confirmed,assigned,done,sent,succeced"/>
+        </xpath>
+        <!-- Cambio de estado del statusbar a Confirmado desde boton-->
+        <xpath expr="/form/header/button[@name='action_toggle_is_locked']" position="after">
+          <button id="button_sent" name="action_sent" string="Tránsito" attrs="{'invisible': [('state_b', '!=', 'done')]}"  type="object"/>
+          <button id="button_success" name="action_success" string="Conforme" attrs="{'invisible': [('state', '!=', 'sent'),('warehouse_id', '!=', 1)]}"  type="object"/>
+          <button id="button_custom_done" states="sent" name="custom_action_done" string="Retornar a Hecho"  type="object"/>
+          <button id="button_return_sent" states="succeced" name="action_return_success" string="Retornar a San juan: Tránsito" type="object"/>
+        </xpath>
+        <field name="user_id" position="after">
+          <field name="user_email" />
+          <field name="password" password="True"/>
+          <field name="user_validation" readonly="1"/>
+        </field>
+      </field>
+    </record>
+  </data>
+</odoo>
