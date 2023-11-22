@@ -20,11 +20,11 @@
           <button id="button_custom_done" states="sent" name="custom_action_done" string="Retornar a Hecho"  type="object"/>
           <button id="button_return_sent" states="succeced" name="action_return_success" string="Retornar a San juan: Tránsito" type="object"/>
         </xpath>
-        <field name="user_id" position="after">
+        <!-- <field name="user_id" position="after">
           <field name="user_email" />
           <field name="password" password="True"/>
           <field name="user_validation" readonly="1"/>
-        </field>
+        </field> -->
       </field>
     </record>
   </data>
